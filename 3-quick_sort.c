@@ -2,14 +2,16 @@
 #include "sort.h"
 /**
  * swap - function that swap two int
- * @a: the fisrt num
- * @b: the second num
+ * @val_1: the fisrt num
+ * @val_2: the second num
  */
-void swap(int *a, int *b)
+void swap(int *val_1, int *val_2)
 {
-	int t = *a;
-	*a = *b;
-	*b = t;
+	int tmp;
+
+	tmp = *val_1;
+	*val_1 = *val_2;
+	*val_2 = tmp;
 }
 /**
  * partition - function that find the partition position
@@ -52,13 +54,13 @@ int partition(int array[], int low, int high, size_t size)
  */
 void quickSort(int array[], int low, int high, size_t size)
 {
-	int pi;
+	int pivot;
 
 	if (low < high)
 	{
-		pi = partition(array, low, high, size);
-		quickSort(array, low, pi - 1, size);
-		quickSort(array, pi + 1, high, size);
+		pivot = partition(array, low, high, size);
+		quickSort(array, low, pivot - 1, size);
+		quickSort(array, pivot + 1, high, size);
 	}
 }
 /**
